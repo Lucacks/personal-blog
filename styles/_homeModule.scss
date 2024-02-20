@@ -1,0 +1,60 @@
+:root {
+    font-size: $default-text-size;
+}
+
+body {
+    background-color: $bg-light-gray;
+}
+
+.header-container {
+    display: inline-block;
+    width: 100%;
+    background-color: white;
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1260px;
+        height: 100px;
+        margin: 0 auto;
+
+        .logo-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            .logo-image {
+                height: auto;
+                max-width: 40px;
+                margin-right: 10px;
+            }
+
+            .logo-name {
+                font-size: 2.8rem;
+                font-weight: 800;
+                opacity: .8;
+            }
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 20%;
+
+            .category {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+.main {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    grid-gap: 50px;
+
+    max-width: 1260px;
+    margin: 20px auto 0;
+}
