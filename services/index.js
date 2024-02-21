@@ -37,3 +37,17 @@ export const getPosts = async () => {
 
     return result.postsConnection.edges;
 }
+
+export const getCategories = async () => {
+    const query = gql`
+        query getCategories {
+            categories {
+                name
+                slug
+            }
+        }
+    `
+    const result = await request(graphqlAPI, query)
+
+    return result.categories;
+}
