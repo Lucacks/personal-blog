@@ -1,12 +1,8 @@
 import Head from "next/head";
 import { PostCard, Categories, post, PostWidget } from "@/components";
+import { getPosts } from '../services'
 
-const posts = [
-  { title: 'React teste', text: 'Testando o React' },
-  { title: 'React com SASS', text: 'Testando o React com SASS' }
-]
-
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <>
       <Head>
@@ -16,8 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='main'>
-        <div className='grid'>
-          {posts.map((post) => <PostCard post={post} key={post.title} />)}
+        <div className='posts-grid'>
+          {posts.map((post) => <PostCard post={post.node} key={post.title} />)}
         </div>
         <div className="components">
           <PostWidget />
@@ -26,4 +22,12 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+
+  return {
+    props: { posts }
+  }
 }
